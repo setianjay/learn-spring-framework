@@ -1,5 +1,10 @@
 package com.setianjay.spring.core.game;
 
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+@Component
+@Qualifier(value = "SuperContraQualifier")
 public class SuperContraGame implements GameConsole {
     @Override
     public void up() {

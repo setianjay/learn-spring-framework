@@ -1,13 +1,20 @@
 package com.setianjay.spring.core.game;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+@ComponentScan
 public class App01GamingBasic {
 
     public static void main(String[] args) {
-        GameConsole marioGame = new MarioGame();
-        GameConsole superContraGame = new SuperContraGame();
-        PacmanGame pacmanGame = new PacmanGame();
+        ApplicationContext context = new AnnotationConfigApplicationContext(App01GamingBasic.class);
 
-        GameRunner gameRunner = new GameRunner(pacmanGame);
-        gameRunner.runGame();
+        //testing initializing PacmanClass with automation providing by Spring
+        context.getBean(GameConsole.class).up();
+
+        context.getBean(GameRunner.class).runGame();
     }
 }
